@@ -4,5 +4,6 @@ import { group } from '../../../models/group'
 const db = connection
 
 export async function getAllGroups(): Promise<group[]> {
-  return db('groups').select()
+  const groups = await db('groups').select()
+  return groups
 }
