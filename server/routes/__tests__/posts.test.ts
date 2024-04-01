@@ -16,8 +16,17 @@ describe('GET api/v1/posts', async () => {
 
     const res = await request(server).get('/api/v1/posts')
 
-    console.log(mockPosts)
+    // console.log(mockPosts)
 
     expect(res.statusCode).toBe(200)
+  })
+  it('should send an error message', async () => {
+    vi.mocked(postsDb.getAllPosts).mockResolvedValue(mockPosts)
+
+    const res = await request(server).get('/wrongurl')
+
+    console.log(res.statusCode)
+
+    expect(res.statusCode).toBe(404)
   })
 })
