@@ -15,7 +15,7 @@ export function PostFeed() {
 
   return (
     <>
-      <div className="h-screen flex flex-col items-center justify-center">
+      <div className="h-screen flex flex-col items-center justify-center mt-10">
         {posts?.map((post) => {
           const date = new Date(post.createdAt)
           return (
