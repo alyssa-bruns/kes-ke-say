@@ -23,9 +23,7 @@ function Footer() {
                 <p className="font-xl">Weather</p>
               </div>
               <div>
-                <p className="font-medium">
                   <DateTimeDisplay />
-                </p>
               </div>
             </div>
           </div>
