@@ -1,20 +1,7 @@
 //@vitest-environment jsdom
 
-import {
-  describe,
-  it,
-  expect,
-  vi,
-  beforeEach,
-  afterEach,
-  beforeAll,
-} from 'vitest'
-import {
-  screen,
-  waitFor,
-  waitForElementToBeRemoved,
-  within,
-} from '@testing-library/react'
+import { describe, it, expect, vi, afterEach, beforeAll } from 'vitest'
+import { screen, waitForElementToBeRemoved } from '@testing-library/react'
 import { renderRoute } from '../../test-utils.tsx'
 import nock from 'nock'
 
@@ -60,6 +47,18 @@ describe('<PostFeed/>', () => {
       </time>
     `)
 
+    expect(scope.isDone()).toBe(true)
+  })
+  it('should show an error message when there is an error', async () => {
+    const scope = nock('http://localhost').get('/api/v1/posts').reply(500)
+
+    renderRoute('/')
+
+    await waitForElementToBeRemoved(() =>
+      screen.queryByText(/This page is loading.../i)
+    )
+    const error = screen.getByText(/Something went wrong sorry/i)
+    expect(error).toBeVisible()
     expect(scope.isDone()).toBe(true)
   })
 })
