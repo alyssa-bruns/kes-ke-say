@@ -1,5 +1,5 @@
 export interface group {
   id: number
   name: string
-  image: Text
+  image: string
 }
