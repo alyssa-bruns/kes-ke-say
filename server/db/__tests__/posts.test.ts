@@ -15,7 +15,7 @@ describe('getAllPosts', () => {
     const allPosts = await db.getAllPosts()
 
     expect(allPosts).toHaveLength(4)
-    expect(allPosts[2].id).toBe(3)
+    expect(allPosts[2].postId).toBe(3)
   })
 })
 
