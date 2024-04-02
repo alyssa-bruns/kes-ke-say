@@ -15,17 +15,41 @@ export function PostFeed() {
 
   return (
     <>
-      {posts?.map((post) => {
-        const date = new Date(post.createdAt)
-        return (
-          <p key={post.postId}>
-            Username: {post.username} <br />
-            {new Intl.DateTimeFormat('en-GB').format(date)} <br />
-            {post.image ? <img src={`${post.image}`} alt="Blog Pic" /> : null}
-            {post.body} <br />
-          </p>
-        )
-      })}
+      <div className="h-screen flex flex-col items-center justify-center">
+        {posts?.map((post) => {
+          const date = new Date(post.createdAt)
+          return (
+            <>
+              <div id="card" className="w-1/2 flex flex-col mt-5">
+                <p key={post.postId}>
+                  <header className="flex flex-row gap-3 items-center">
+                    <div> {post.username}</div>
+                    <div className="text-sm text-gray-500">
+                      {new Intl.DateTimeFormat('en-GB').format(date)}
+                    </div>
+                  </header>
+                  <div id="content" className="grid grid-cols-4 gap-3">
+                    <div className="col-span-3 flex flex-col">
+                      <div id="body" className="font-light text-sm pt-2">
+                        {post.body}
+                      </div>
+                    </div>
+                    <div id="image" className="flex items-center">
+                      {post.image ? (
+                        <img src={`${post.image}`} alt="Blog Pic" />
+                      ) : null}
+                    </div>
+                  </div>
+                  <footer className="flex flex-row pt-7 gap-2 items-center">
+                    <p>View Post</p>
+                  </footer>
+                  <hr className="mt-5"></hr>
+                </p>
+              </div>
+            </>
+          )
+        })}
+      </div>
     </>
   )
 }
