@@ -1,5 +1,5 @@
 import express from 'express'
-import * as db from '../db/functions/users.ts'
+import * as db from '../db/functions/users'
 const router = express.Router()
 
 // GET /api/v1/posts
@@ -11,11 +11,11 @@ router.get('/', (req, res) => {
 router.get('/profiles/:name', async (req, res) => {
   try {
     const username = req.params.name
-    const profiles = await db.getProfileByUsername(username)
-    // if (profiles.length === id + 1) {
+    const currentUser = await db.getProfileByUsername(username)
+    // if (currentUser.length === id + 1) {
     //   res.status(404).send('This user does not exist!')
     // }
-    res.json(profiles)
+    res.json(currentUser)
     return
   } catch (error) {
     console.error('error lol')
