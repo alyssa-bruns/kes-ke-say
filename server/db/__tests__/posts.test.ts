@@ -6,8 +6,8 @@ beforeAll(() => {
   return connection.migrate.latest()
 })
 
-beforeEach(() => {
-  return connection.seed.run()
+beforeEach(async () => {
+  await connection.seed.run()
 })
 
 describe('getAllPosts', () => {

@@ -21,12 +21,7 @@ export function PostFeed() {
           <p key={post.postId}>
             Username: {post.username} <br />
             {new Intl.DateTimeFormat('en-GB').format(date)} <br />
-            {post.image ? (
-              <img
-                src={`${post.image}`}
-                alt="No pic was posted with this post"
-              />
-            ) : null}
+            {post.image ? <img src={`${post.image}`} alt="Blog Pic" /> : null}
             {post.body} <br />
           </p>
         )
