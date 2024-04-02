@@ -1,9 +1,9 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { fetchOneProfile } from '../apis/userProfileApi'
 
-export function useFetchProfile() {
+export function useFetchProfile(username: string) {
   return useQuery({
-    queryKey: ['user', 'shaq'],
-    queryFn: () => fetchOneProfile('shaq'),
+    queryKey: ['user'],
+    queryFn: () => fetchOneProfile(username),
   })
 }
