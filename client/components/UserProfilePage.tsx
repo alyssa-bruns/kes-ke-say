@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { User } from '../../models/user'
-// import { useFetchProfile } from '../hooks/UserProfileHook'
+import { useFetchProfile } from '../hooks/UserProfileHook'
 import * as api from '../apis/userProfileApi'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 
@@ -14,17 +14,22 @@ function UserProfilePage() {
   //     location: 'location',
   //     image: 'image',
   //   }
-  // const { data: profiles, isPending, isError, error } = useFetchProfile()
-  const { isPending, isError, data, error } = useQuery({
-    queryKey: ['user', 'shaq'],
-    queryFn: () => api.fetchOneProfile('shaq'),
-  })
+  const { data: profile, isLoading, isError, error } = useFetchProfile()
+  // const {
+  //   isLoading,
+  //   isError,
+  //   data: profile,
+  //   error,
+  // } = useQuery({
+  //   queryKey: ['user', 'shaq'],
+  //   queryFn: () => api.fetchOneProfile('shaq'),
+  // })
 
-  if (isPending) {
+  if (isLoading) {
     return <p>Loading...</p>
   }
 
-  if (isError) {
+  if (isError || !profile) {
     return (
       <>
         {console.error(error)}
@@ -32,11 +37,8 @@ function UserProfilePage() {
       </>
     )
   }
-
-  const profile = data
   return (
     <>
-      <p>profiles {profile}</p>
       <div key={profile.id}>
         <p>Username: {profile.username}</p>
         <p>Full Name: {profile.fullName}</p>
