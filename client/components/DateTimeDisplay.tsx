@@ -10,5 +10,11 @@ export default function DateTimeDisplay() {
     return () => clearInterval(timerId)
   }, [])
   const dateTimeStr = currentDate.toLocaleString('en-FR', { timeZone: 'CET' })
-  return <div>Current Time: {dateTimeStr}</div>
+  return (
+    <div>
+      <h3>
+        Time in France: <span className="text-sm mt-4">{dateTimeStr}</span>
+      </h3>
+    </div>
+  )
 }

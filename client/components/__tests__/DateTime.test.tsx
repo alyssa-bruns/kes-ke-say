@@ -13,7 +13,7 @@ afterAll(() => {
 describe('<DateTimeDisplay/>', () => {
   it('should show date and time', async () => {
     const { ...screen } = renderRoute('/')
-    const date = await screen.getByText(/Current Time:/i)
+    const date = await screen.getByText(/Time in France:/i)
     const currentTime = new Date()
     expect(date.textContent).toContain(
       currentTime.toLocaleDateString('en-FR', { timeZone: 'CET' })
