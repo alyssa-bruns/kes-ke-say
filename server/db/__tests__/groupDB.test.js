@@ -25,7 +25,7 @@ describe('getAllGroups', () => {
     //write test here
     // arrange
     const AllGroups = await db.getAllGroups()
-    console.log(AllGroups, 'console log here')
+    // console.log(AllGroups, 'console log here')
     // assert
 
     // act
