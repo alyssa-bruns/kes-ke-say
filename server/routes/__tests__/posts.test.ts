@@ -21,12 +21,12 @@ describe('GET api/v1/posts', async () => {
     expect(res.statusCode).toBe(200)
   })
   it('should send an error message', async () => {
-    vi.mocked(postsDb.getAllPosts).mockResolvedValue(mockPosts)
+    vi.mocked(postsDb.getAllPosts).mockRejectedValue(mockPosts)
 
-    const res = await request(server).get('/wrongurl')
+    const res = await request(server).get('/api/v1/posts')
 
     console.log(res.statusCode)
 
-    expect(res.statusCode).toBe(404)
+    expect(res.statusCode).toBe(500)
   })
 })

@@ -1,6 +1,6 @@
 import { useGetAllPosts } from '../hooks/use-get-posts'
 
-export function AllPosts() {
+export function PostFeed() {
   const { isPending, isError, data } = useGetAllPosts()
 
   if (isPending) {
