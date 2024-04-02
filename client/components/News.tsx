@@ -2,15 +2,15 @@ import useNews from '../hooks/useNews.ts'
 import { Articles, News as NewsModel } from '../../models/news.ts'
 
 export default function News() {
-  // const { data, isLoading, isError } = useNews()
+  const { data, isLoading, isError } = useNews()
 
-  // if (isLoading) {
-  //   return <p>wait</p>
-  // }
+  if (isLoading) {
+    return <p>wait</p>
+  }
 
-  // if (isError) {
-  //   return <p>Oops</p>
-  // }
+  if (isError) {
+    return <p>Oops</p>
+  }
 
   // const newsData: Articles = data
   // const subsetNewsData = newsData.articles.slice(0, 6)
