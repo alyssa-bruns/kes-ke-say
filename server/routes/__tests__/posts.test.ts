@@ -6,8 +6,22 @@ import server from '../../server'
 vi.mock('../../db/functions/posts')
 
 const mockPosts = [
-  { id: 1, user_id: 99, body: 'Hello', image: 'url', created_at: '3:00pm' },
-  { id: 2, user_id: 43, body: 'Bye', image: 'url', created_at: '3:01pm' },
+  {
+    postId: 1,
+    userId: 99,
+    body: 'Hello',
+    image: 'url',
+    createdAt: 2342342342,
+    username: 'Joel',
+  },
+  {
+    postId: 2,
+    userId: 43,
+    body: 'Bye',
+    image: 'url',
+    createdAt: 23423423,
+    username: 'Alyssa',
+  },
 ]
 
 describe('GET api/v1/posts', async () => {
