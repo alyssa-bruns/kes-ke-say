@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 
 export default function DateTimeDisplay() {
   const [currentDate, setCurrentDate] = useState(new Date())
-  console.log(currentDate)
   useEffect(() => {
     const timerId = setInterval(() => {
       setCurrentDate(new Date())
