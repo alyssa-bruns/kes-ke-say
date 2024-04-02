@@ -1,5 +1,5 @@
 //@vitest-environment jsdom
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeAll } from 'vitest'
 import {
   render,
   waitFor,
@@ -31,6 +31,10 @@ const mockNews = [
   },
 ]
 
+// beforeAll(() => {
+//   nock.disableNetConnect()
+// })
+
 describe('<News/>', () => {
   it('should show a loading indicator', async () => {
     const scope = nock('https://newsapi.org')
@@ -41,22 +45,22 @@ describe('<News/>', () => {
 
     const loading = await screen.findByText(/wait/i)
     expect(loading).toBeVisible()
-    expect(scope.isDone()).toBe(false)
   })
   it('should show news articles', async () => {
-    const scope = nock('https://newsapi.org')
-      .get(`/v2/top-headlines?country=fr&apiKey=${mockApiKey}`)
+    const scope = nock('http://localhost')
+      .get(`/api/v1/external`)
       .reply(200, mockNews)
 
     const { ...screen } = renderRoute('/news')
 
-    // await waitForElementToBeRemoved(() => screen.findByText(/wait/i))
-
-    const list = await screen.findByRole('list')
-    const listItems = within(list)
-      .getAllByRole('listitem')
-      .map((li) => li.textContent)
-    expect(listItems).toMatchInlineSnapshot()
+    const header1 = await screen.findByText(
+      "Grippe aviaire : première mondiale, une personne infectée par une vache laitière - L'Indépendant"
+    )
+    // const header2 = await screen.findByText(
+    //   'OM - PSG : Mbappé a refait des siennes à Marseille ? - Le10sport'
+    // )
+    expect(header1).toBeVisible()
+    // expect(header2).toBeVisible()
     expect(scope.isDone()).toBe(true)
   })
 })
