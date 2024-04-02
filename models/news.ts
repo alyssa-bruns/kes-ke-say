@@ -1,3 +1,9 @@
+export interface Articles {
+  status: string
+  totalResults: number
+  articles: News[]
+}
+
 export interface News {
   source: Source
   author: string

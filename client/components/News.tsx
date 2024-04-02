@@ -1,12 +1,8 @@
-// const { data, isPending, isError, error } = useAnimals()
-
-import { useQuery } from '@tanstack/react-query'
 import useNews from '../hooks/useNews.ts'
-import { getNews } from '../apis/apiClient.ts'
-import { News, Source } from '../../models/news.ts'
+import { Articles, News as NewsModel } from '../../models/news.ts'
 
 export default function News() {
-  const { data, isLoading, isError, error } = useNews()
+  const { data, isLoading, isError } = useNews()
 
   if (isLoading) {
     return <p>wait</p>
@@ -16,15 +12,20 @@ export default function News() {
     return <p>Oops</p>
   }
 
-  console.log({ data })
+  const newsData: Articles = data
+  const subsetNewsData = newsData.articles.slice(0, 5)
 
   return (
     <div>
       <h1>News</h1>
       <ul>
         {' '}
-        {data?.map((news: News) => (
-          <li key={news.source.id}>{news.title}</li>
+        {subsetNewsData.map((news: NewsModel) => (
+          <li key={news.source.id}>
+            <a href={news.url} className="text-sm mt-4">
+              {news.title}
+            </a>
+          </li>
         ))}
       </ul>
     </div>
