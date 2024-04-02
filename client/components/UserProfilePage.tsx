@@ -6,43 +6,17 @@ import { useFetchProfile } from '../hooks/UserProfileHook'
 // import { useState } from 'react'
 
 function UserProfilePage() {
-  const hardCode = [
-    {
-      id: 1,
-      auth0Id: 'authID',
-      username: 'usernameShaq',
-      full_name: 'Ida Dapizza',
-      location: 'location',
-      image: 'image',
-    },
-  ]
+  const params = useParams()
+  const {
+    data: profile,
+    isLoading,
+    isError,
+    error,
+  } = useFetchProfile(params?.username as string)
 
-  const dataArr = []
-
-  // const params = useParams()
-  // if (params.id == undefined) {
-  //   throw new Error('Params.id is undefined')
-  // }
-
-  // const theProfile = hardCode.find((c) => c.username === params.id)
-  // if (!theProfile) {
-  //   throw new Error(`No user called: ${params.id}`)
-  // }
-
-  const { data: profile, isLoading, isError, error } = useFetchProfile('shaq')
-
-  dataArr.push(profile)
-  console.log(dataArr)
-
-  // const {
-  //   isLoading,
-  //   isError,
-  //   data: profile,
-  //   error,
-  // } = useQuery({
-  //   queryKey: ['user', 'shaq'],
-  //   queryFn: () => api.fetchOneProfile('shaq'),
-  // })
+  if (params.username == undefined) {
+    throw new Error('Params.username is undefined')
+  }
 
   if (isLoading) {
     return <p>Loading...</p>
@@ -52,16 +26,21 @@ function UserProfilePage() {
     return (
       <>
         {console.error(error)}
-        <p>Error</p>
+        <p>The username `{params.username}` does not exist.</p>
       </>
     )
   }
+
   return (
     <>
       <div key={profile.id}>
-        <p>Full Name: {profile.fullName}</p>
+        <img
+          src={`/public/images/avatars/${profile.image}`}
+          alt="profilePicture"
+        />
+        <h4>Username: {profile.username}</h4>
+        <h3>Full Name: {profile.fullName}</h3>
         <p>Location: {profile.location}</p>
-        <p> This is the page of user {profile.username}</p>
       </div>
     </>
   )

@@ -8,7 +8,6 @@ function App() {
     <>
       <Nav />
       <Outlet />
-      <UserProfilePage />
       <Footer />
     </>
   )
