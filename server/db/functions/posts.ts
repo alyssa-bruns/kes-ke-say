@@ -11,7 +11,7 @@ export async function getAllPosts(): Promise<Post[]> {
       'posts.body as body',
       'posts.image as image',
       'posts.created_at as createdAt',
-      'users.id as useId',
+      'users.id as userId',
       'users.username as username'
     )
   return data

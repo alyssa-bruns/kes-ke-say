@@ -24,9 +24,13 @@ export function PostFeed() {
                 <p key={post.postId}>
                   <header className="flex flex-row gap-3 items-center">
                     <div> {post.username}</div>
-                    <div className="text-sm text-gray-500">
+                    <time
+                      dateTime={date.toISOString()}
+                      className="text-sm text-gray-500"
+                      role="time"
+                    >
                       {new Intl.DateTimeFormat('en-GB').format(date)}
-                    </div>
+                    </time>
                   </header>
                   <div id="content" className="grid grid-cols-4 gap-3">
                     <div className="col-span-3 flex flex-col">
