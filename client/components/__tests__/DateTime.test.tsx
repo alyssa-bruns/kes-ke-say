@@ -18,6 +18,5 @@ describe('<DateTimeDisplay/>', () => {
     expect(date.textContent).toContain(
       currentTime.toLocaleDateString('en-FR', { timeZone: 'CET' })
     )
-    console.log(currentTime, date.textContent)
   })
 })
