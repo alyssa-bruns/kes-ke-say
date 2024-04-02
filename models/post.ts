@@ -3,5 +3,5 @@ export interface Post {
   user_id: number
   body: string
   image: string
-  created_at: string
+  created_at: number
 }

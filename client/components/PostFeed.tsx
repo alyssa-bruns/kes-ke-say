@@ -12,15 +12,21 @@ export function PostFeed() {
   }
 
   const posts = data
+
   return (
     <>
       {posts?.map((post) => {
+        const date = new Date(post.created_at)
         return (
           <p key={post.id}>
             User ID: {post.id} <br />
-            {post.created_at} <br />
-            <img src={`${post.image}`} alt="No pic was posted with this post" />
-            <br />
+            {new Intl.DateTimeFormat('en-GB').format(date)} <br />
+            {post.image ? (
+              <img
+                src={`${post.image}`}
+                alt="No pic was posted with this post"
+              />
+            ) : null}
             {post.body} <br />
           </p>
         )
@@ -28,3 +34,6 @@ export function PostFeed() {
     </>
   )
 }
+
+// const date = new Date(Date.UTC(2020, 11, 20, 3, 23, 16, 738))
+// (new Intl.DateTimeFormat('en-US').format(date))
