@@ -5,28 +5,28 @@
  * This injects Tailwind's base styles and any base styles registered by
  * plugins.
  */
- @tailwind base;
+@tailwind base;
 
- /**
+/**
   * This injects Tailwind's component classes and any component classes
   * registered by plugins.
   */
- @tailwind components;
- 
- /**
+@tailwind components;
+
+/**
   * This injects Tailwind's utility classes and any utility classes registered
   * by plugins.
   */
- @tailwind utilities;
- 
- /**
+@tailwind utilities;
+
+/**
   * Use this directive to control where Tailwind injects the hover, focus,
   * responsive, dark mode, and other variants of each class.
   *
   * If omitted, Tailwind will append these classes to the very end of
   * your stylesheet by default.
   */
- @tailwind variants;
+@tailwind variants;
 
 @layer base {
   h1 {
@@ -41,11 +41,29 @@
 
 @layer components {
   .btn-blue {
+    @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block mx-auto;
+  }
+  .profile-border {
+    @apply max-w-lg mx-auto my-10 bg-white rounded-lg shadow-md p-12;
+  }
+  .profile-image {
+    @apply w-max h-max mx-auto rounded-full mx-auto;
+  }
+  .profile-location {
+    @apply text-center text-blue-500 hover:text-gray-700 mx-3;
+  }
+  .profile-username {
+    @apply text-center text-2xl font-semibold mt-3;
+  }
+  .profile-fullName {
+    @apply text-center text-gray-600 mt-1;
+  }
+  .top-buttons {
     @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
   }
 }
 
-html, 
+html,
 body {
   font-family: 'Overpass Mono', monospace;
 }
