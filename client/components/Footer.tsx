@@ -1,3 +1,4 @@
+import DateTimeDisplay from './DateTimeDisplay'
 function Footer() {
   return (
     <>
@@ -19,10 +20,10 @@ function Footer() {
                 <p className="font-medium">News</p>
               </div>
               <div>
-                <p className="font-medium">Weather</p>
+                <p className="font-xl">Weather</p>
               </div>
               <div>
-                <p className="font-medium">Date & Time</p>
+                <DateTimeDisplay />
               </div>
             </div>
           </div>
