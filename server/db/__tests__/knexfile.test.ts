@@ -55,6 +55,19 @@ describe('getProfileByUsername', () => {
   })
 })
 
+// describe('deleteProfileById', () => {
+//   it.todo('Deletes the selected profile by ID', async () => {
+//     // Arrange
+//     await db.deleteProfileById(2)
+
+//     // Act
+//     const allProfiles = await db.getAllProfiles()
+
+//     // Assert
+//     expect(allProfiles).toHaveLength(3)
+//   })
+// })
+
 afterAll(() => {
   connection.destroy()
 })
