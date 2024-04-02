@@ -59,10 +59,9 @@ function UserProfilePage() {
   return (
     <>
       <div key={profile.id}>
-        <p>Username: {profile.username}</p>
         <p>Full Name: {profile.fullName}</p>
         <p>Location: {profile.location}</p>
-        <p> This is the page of user {profile.id}</p>
+        <p> This is the page of user {profile.username}</p>
       </div>
     </>
   )
