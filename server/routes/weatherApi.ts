@@ -9,7 +9,7 @@ const weatherApiKey = process.env.WEATHER_API_KEY
 router.get('/', async (req, res, next) => {
   try {
     const weather = await request.get(
-      `https://newsapi.org/v2/top-headlines?country=fr&apiKey=${weatherApiKey}`
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/paris/?key=${weatherApiKey} `
     )
     res.json(weather.body)
   } catch (error) {
