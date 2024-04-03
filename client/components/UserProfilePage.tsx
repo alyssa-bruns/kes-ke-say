@@ -1,9 +1,5 @@
-import { Link, useParams } from 'react-router-dom'
-import { User } from '../../models/user'
+import { useParams } from 'react-router-dom'
 import { useFetchProfile } from '../hooks/UserProfileHook'
-// import * as api from '../apis/userProfileApi'
-// import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-// import { useState } from 'react'
 
 function UserProfilePage() {
   const params = useParams()
@@ -11,7 +7,6 @@ function UserProfilePage() {
     data: profile,
     isLoading,
     isError,
-    error,
   } = useFetchProfile(params?.username as string)
 
   if (params.username == undefined) {
@@ -25,7 +20,6 @@ function UserProfilePage() {
   if (isError || !profile) {
     return (
       <>
-        {console.error(error)}
         <p>The username `{params.username}` does not exist.</p>
       </>
     )
@@ -50,7 +44,7 @@ function UserProfilePage() {
         <button className="btn-blue">Edit Profile</button>
         <form>
           <div>
-            <label>Bio </label>
+            <label htmlFor="bioInput">Bio </label>
             <input
               className="w-max h-max"
               placeholder="Enter your bio..."

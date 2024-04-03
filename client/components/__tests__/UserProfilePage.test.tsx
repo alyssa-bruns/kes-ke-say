@@ -1,13 +1,5 @@
 //@vitest-environment jsdom
-import {
-  describe,
-  it,
-  expect,
-  beforeEach,
-  vi,
-  afterAll,
-  beforeAll,
-} from 'vitest'
+import { describe, it, expect, beforeAll } from 'vitest'
 import { renderRoute } from '../../test-utils'
 import nock from 'nock'
 
