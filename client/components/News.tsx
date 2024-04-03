@@ -2,18 +2,19 @@ import useNews from '../hooks/useNews.ts'
 import { Articles, News as NewsModel } from '../../models/news.ts'
 
 export default function News() {
-  const { data, isLoading, isError } = useNews()
+  // const { data, isLoading, isError } = useNews()
 
-  if (isLoading) {
-    return <p>wait</p>
-  }
+  // if (isLoading) {
+  //   return <p>wait</p>
+  // }
 
-  if (isError) {
-    return <p>Oops</p>
-  }
+  // if (isError) {
+  //   return <p>Oops</p>
+  // }
 
-  // const newsData: Articles = data
-  // const subsetNewsData = newsData.articles.slice(0, 6)
+  // const subsetNewsData: Articles = data
+  // const newsData = subsetNewsData.articles.slice(0, 6)
+  // console.log(newsData)
 
   // Comment the newsData mock data variable and uncomment the stuff above
   const newsData = [
@@ -65,25 +66,22 @@ export default function News() {
 
   return (
     // Tailwind CSS liste card - posts - article list By maxacrea
-    <div className="flex justify-center items-center h-screen bg-gray-50">
+    <div className="flex justify-center items-center bg-gray-50">
       <div className="flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 ">
-        <div className="relative flex min-h-screen flex-col justify-center overflow-hidden py-6 sm:py-12">
+        <div className="relative flex flex-col justify-center overflow-hidden py-6 sm:py-12">
           <div className="m-10 flex flex-col items-center mx-auto max-w-screen-lg">
             <div className="header flex w-full justify-center">
-              <h2 className="font-black pb-10 mb-20 text-5xl text-blue-900 before:block before:absolute before:bg-sky-300 relative before:w-1/3 before:h-1 before:bottom-0 before:left-1/3 text-center">
+              <h2 className="font-black pb-10 mb-20 text-5xl text-blue-900 before:block before:absolute before:bg-sky-300 relative before:w-1/3  before:h-1 before:bottom-0 before:left-1/3 text-center">
                 Jean Pierre dans Tresses collées
               </h2>
             </div>
-            <div
-              className="grid w-full gap-10 grid-cols-3"
-              style={{ maxHeight: 'calc(100vh - 300px)', overflowY: 'auto' }}
-            >
+            <div className="grid w-full gap-10 grid-cols-3">
               {newsData.map(
                 (
                   news //subsetNewsData.map
                 ) => (
                   <div
-                    key={news.id} // news.source.id
+                    key={news.author} // news.source.id
                     className="bg-white w-full rounded-lg shadow-md flex flex-col transition-all overflow-hidden hover:shadow-2xl"
                   >
                     <div className="p-6">

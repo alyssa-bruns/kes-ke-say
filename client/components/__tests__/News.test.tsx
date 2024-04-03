@@ -12,7 +12,6 @@ import { renderRoute } from '../../test-utils.tsx'
 
 nock.disableNetConnect()
 
-const mockApiKey = '054d28f6b94c40ef8431da976fca149d'
 const mockNews = [
   {
     id: 1,
@@ -37,8 +36,8 @@ const mockNews = [
 
 describe('<News/>', () => {
   it('should show a loading indicator', async () => {
-    const scope = nock('https://newsapi.org')
-      .get(`/v2/top-headlines?country=fr&apiKey=${mockApiKey}`)
+    const scope = nock('http://localhost')
+      .get(`/api/v1/external`)
       .reply(200, mockNews)
 
     const { ...screen } = renderRoute('/news')
@@ -56,11 +55,7 @@ describe('<News/>', () => {
     const header1 = await screen.findByText(
       "Grippe aviaire : première mondiale, une personne infectée par une vache laitière - L'Indépendant"
     )
-    // const header2 = await screen.findByText(
-    //   'OM - PSG : Mbappé a refait des siennes à Marseille ? - Le10sport'
-    // )
     expect(header1).toBeVisible()
-    // expect(header2).toBeVisible()
     expect(scope.isDone()).toBe(true)
   })
 })

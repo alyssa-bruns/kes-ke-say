@@ -7,7 +7,7 @@ export default function useNews() {
     queryFn: () => getNews(),
   })
 
-  // console.log(query)
+  console.log(query)
 
   return { ...query }
 }
