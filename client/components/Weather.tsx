@@ -1,4 +1,4 @@
-import { CurrentConditions, WeatherModel } from '../../models/weather'
+import { CurrentConditions } from '../../models/weather'
 import useWeather from '../hooks/useWeather'
 
 export default function Weather() {
@@ -12,17 +12,14 @@ export default function Weather() {
     return <p>Oops no weather</p>
   }
 
-  const weatherData: CurrentConditions[] = data
+  const weatherData: CurrentConditions[] = data.days
 
   return (
     <div>
-      <ul>
-        {weatherData.map((weather) => (
-          <li key={weather.dew} className="text-sm mt-4">
-            {weather.temp}
-          </li>
-        ))}
-      </ul>
+      <p>Todays Temp:</p>
+      <p className="text-sm mt-4 text-blue-900">
+        Paris - {weatherData[0].temp}&deg;c
+      </p>
     </div>
   )
 }
