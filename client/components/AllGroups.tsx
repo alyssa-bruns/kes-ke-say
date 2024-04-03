@@ -63,9 +63,6 @@ export function AllGroups() {
                 <span className="block font-semibold text-xl">
                   {group.name}
                 </span>
-                <span className="block bg-white rounded-full text-purple-500 text-xs font-bold px-3 py-2 leading-none flex items-center">
-                  Button
-                </span>
               </div>
             </div>
           </div>
