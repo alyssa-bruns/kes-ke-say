@@ -1,5 +1,4 @@
 import { it, expect, describe, vi } from 'vitest'
-import nock from 'nock'
 import request from 'supertest'
 import * as db from '../../db/functions/groups'
 import server from '../../server'
@@ -37,9 +36,7 @@ const mockGroups = [
 
 describe('/groups', () => {
   it('should have a group', async () => {
-    //Act
     const res = await request(server).get('/api/v1/groups')
-    //Assert
     expect(res.statusCode).toBe(200)
     expect(mockGroups[1].name).toBe('The fast and the curious')
   })

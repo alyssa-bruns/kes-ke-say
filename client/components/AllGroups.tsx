@@ -18,10 +18,6 @@ export function AllGroups() {
     return <h1>Error</h1>
   }
 
-  if (groupsData === undefined) {
-    return
-  }
-
   return (
     <>
       <h1>All groups</h1>
@@ -35,7 +31,6 @@ export function AllGroups() {
               className="absolute bottom-0 left-0 mb-8 "
               viewBox="0 0 375 283"
               fill="none"
-              // styleName="transform: scale(1.5); opacity: 0.1;"
             >
               <rect
                 x="159.52"

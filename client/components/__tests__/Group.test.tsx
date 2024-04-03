@@ -1,19 +1,9 @@
 // @vitest-environment jsdom
 import '../../test-utils.tsx'
 import { describe, it, expect, beforeAll } from 'vitest'
-import {
-  render,
-  screen,
-  waitForElementToBeRemoved,
-} from '@testing-library/react'
+import { screen, waitForElementToBeRemoved } from '@testing-library/react'
 import nock from 'nock'
 import { renderRoute } from '../../test-utils.tsx'
-
-import * as api from '../../apis/apiGroup.ts'
-
-import App from '../../components/App.tsx'
-import AllGroups from '../../components/AllGroups.tsx'
-
 const fakeGroups = [
   { id: 1, name: 'friendChips', image: 'fries-darkgray.png' },
   { id: 2, name: 'The fast and the curious', image: 'car-darkgray.png' },
@@ -26,46 +16,27 @@ beforeAll(() => {
 
 describe('allGroups', () => {
   it('should show loading state', async () => {
-    //write test here
-    // arrange
-    const group = nock('http://localhost')
-      .get('/api/v1/groups')
-      .reply(200, fakeGroups)
-    // act
+    nock('http://localhost').get('/api/v1/groups').reply(200, fakeGroups)
 
     renderRoute('/groups')
-    //  assert
     const loading = await screen.findByText('Loading...GroupPage')
     expect(loading).toBeVisible()
   })
 
   it('shows group image', async () => {
-    // arrange
-
-    const group = nock('http://localhost')
-      .get('/api/v1/groups')
-      .reply(200, fakeGroups)
-    // act
+    nock('http://localhost').get('/api/v1/groups').reply(200, fakeGroups)
     renderRoute('/groups')
 
-    //  assert
     const groupImage = await screen.findByAltText('friendChips')
     expect(groupImage).toHaveAttribute(
       'src',
       '/images/icons/fries-darkgray.png'
     )
-    // expect(group.isDone()).toBe(true)
   })
 
   it('shows group name', async () => {
-    // arrange
-    const group = nock('http://localhost')
-      .get('/api/v1/groups')
-      .reply(200, fakeGroups)
-    // act
+    nock('http://localhost').get('/api/v1/groups').reply(200, fakeGroups)
     renderRoute('/groups')
-
-    //  assert
     const groupName = await screen.findByText('friendChips')
     expect(groupName).toBeVisible()
   })
@@ -85,14 +56,3 @@ describe('allGroups', () => {
     expect(group.isDone()).toBe(true)
   })
 })
-
-// describe('componentName', () =>{
-//   it.todo('what the component renders', async () => {
-//     //write test here
-
-//     // arrange
-//     // act
-//     // assert
-//
-//   })
-// })
