@@ -30,7 +30,7 @@ describe('getAllGroups', () => {
 
     // act
     expect(AllGroups).toHaveLength(3)
-    // expect(AllGroups[1].id).toBe(2)
+    expect(AllGroups[1].id).toBe(2)
   })
 })
 
