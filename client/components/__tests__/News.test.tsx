@@ -51,4 +51,14 @@ describe('<News/>', () => {
     expect(header1).toBeVisible()
     expect(scope.isDone()).toBe(true)
   })
+  it('should show an error', async () => {
+    const scope = nock('http://localhost').get(`/api/v1/external`).reply(500)
+
+    const { ...screen } = renderRoute('/news')
+    await waitForElementToBeRemoved(() => screen.getByText(/wait/i))
+
+    const errorMsg = screen.getByText(/Oops/i)
+    expect(errorMsg).toBeVisible()
+    expect(scope.isDone()).toBe(true)
+  })
 })

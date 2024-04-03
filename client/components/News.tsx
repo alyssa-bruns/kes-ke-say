@@ -1,5 +1,5 @@
 import useNews from '../hooks/useNews.ts'
-import { Articles, News as NewsModel } from '../../models/news.ts'
+import { Articles } from '../../models/news.ts'
 
 export default function News() {
   const { data, isLoading, isError } = useNews()
