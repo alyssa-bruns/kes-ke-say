@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import DateTimeDisplay from './DateTimeDisplay'
-import News from './News'
 import Weather from './Weather'
 function Footer() {
   return (

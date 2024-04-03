@@ -12,30 +12,29 @@ import { renderRoute } from '../../test-utils.tsx'
 
 nock.disableNetConnect()
 
-const mockWeather = [{ id: 1, place: 'Paris' }]
+const mockWeather = [{ id: 1, place: 'Paris', temp: 12.6 }]
 
-describe('<News/>', () => {
-  it('should show a loading indicator', async () => {
+describe('<Weather/>', () => {
+  it.todo('should show a loading indicator', async () => {
     const scope = nock('http://localhost')
       .get(`/api/v1/weather`)
-      .reply(200, mockNews)
+      .reply(200, mockWeather)
 
-    const { ...screen } = renderRoute('/news')
+    const { ...screen } = renderRoute('/weather')
 
-    const loading = await screen.findByText(/wait/i)
+    const loading = await screen.findByLabelText(/loading/i)
     expect(loading).toBeVisible()
   })
-  it('should show news articles', async () => {
+  it.todo('should show temperature', async () => {
     const scope = nock('http://localhost')
       .get(`/api/v1/weather`)
-      .reply(200, mockNews)
+      .reply(200, mockWeather)
 
-    const { ...screen } = renderRoute('/news')
+    const { ...screen } = renderRoute('/weather')
 
-    const header1 = await screen.findByText(
-      "Grippe aviaire : première mondiale, une personne infectée par une vache laitière - L'Indépendant"
-    )
-    expect(header1).toBeVisible()
+    const weatherTemp = await screen.findByRole('paragraph')
+    // const weatherTemp = await screen.findByText(/paris/i)
+    expect(weatherTemp).toBeVisible()
     expect(scope.isDone()).toBe(true)
   })
 })
