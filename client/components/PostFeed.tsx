@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useGetAllPosts } from '../hooks/use-get-posts'
 
 export function PostFeed() {
@@ -21,7 +22,7 @@ export function PostFeed() {
           return (
             <>
               <div id="card" className="w-1/2 flex flex-col mt-5">
-                <p key={post.postId}>
+                <div key={post.postId}>
                   <header className="flex flex-row gap-3 items-center">
                     <div> {post.username}</div>
                     <time
@@ -45,10 +46,10 @@ export function PostFeed() {
                     </div>
                   </div>
                   <footer className="flex flex-row pt-7 gap-2 items-center">
-                    <p>View Post</p>
+                    <Link to={`/post/${post.postId}`}>View Post</Link>
                   </footer>
                   <hr className="mt-5"></hr>
-                </p>
+                </div>
               </div>
             </>
           )
