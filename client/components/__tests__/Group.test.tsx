@@ -1,7 +1,11 @@
 // @vitest-environment jsdom
 import '../../test-utils.tsx'
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { describe, it, expect, beforeAll } from 'vitest'
+import {
+  render,
+  screen,
+  waitForElementToBeRemoved,
+} from '@testing-library/react'
 import nock from 'nock'
 import { renderRoute } from '../../test-utils.tsx'
 
@@ -16,6 +20,10 @@ const fakeGroups = [
   { id: 3, name: 'Taco bout it', image: 'taco-darkgray.png' },
 ]
 
+beforeAll(() => {
+  nock.disableNetConnect()
+})
+
 describe('allGroups', () => {
   it('should show loading state', async () => {
     //write test here
@@ -23,16 +31,59 @@ describe('allGroups', () => {
     const group = nock('http://localhost')
       .get('/api/v1/groups')
       .reply(200, fakeGroups)
-
     // act
+
     renderRoute('/groups')
     //  assert
     const loading = await screen.findByText('Loading...GroupPage')
     expect(loading).toBeVisible()
+  })
+
+  it('shows group image', async () => {
+    // arrange
+
+    const group = nock('http://localhost')
+      .get('/api/v1/groups')
+      .reply(200, fakeGroups)
+    // act
+    renderRoute('/groups')
+
+    //  assert
+    const groupImage = await screen.findByAltText('friendChips')
+    expect(groupImage).toHaveAttribute(
+      'src',
+      '/images/icons/fries-darkgray.png'
+    )
     // expect(group.isDone()).toBe(true)
   })
 
-  it.todo('show name and image', async () => {})
+  it('shows group name', async () => {
+    // arrange
+    const group = nock('http://localhost')
+      .get('/api/v1/groups')
+      .reply(200, fakeGroups)
+    // act
+    renderRoute('/groups')
+
+    //  assert
+    const groupName = await screen.findByText('friendChips')
+    expect(groupName).toBeVisible()
+  })
+
+  it('shows an error', async () => {
+    const group = nock('http://localhost').get('/api/v1/groups').reply(500)
+
+    renderRoute('/groups')
+
+    await waitForElementToBeRemoved(() =>
+      screen.queryByText(/Loading...GroupPage/i)
+    )
+
+    const error = await screen.findByText(/Error/i)
+
+    expect(error).toBeVisible()
+    expect(group.isDone()).toBe(true)
+  })
 })
 
 // describe('componentName', () =>{
