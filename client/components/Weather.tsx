@@ -1,11 +1,12 @@
 import { CurrentConditions } from '../../models/weather'
 import useWeather from '../hooks/useWeather'
+import LoadingIndicator from './LoadingIndicator'
 
 export default function Weather() {
   const { data, isPending, isError } = useWeather()
 
   if (isPending) {
-    return <p>Wait for Weather</p>
+    return <LoadingIndicator />
   }
 
   if (isError) {
