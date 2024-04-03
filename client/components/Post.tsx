@@ -45,7 +45,32 @@ export function Post() {
               </div>
             </div>
             <footer className="flex flex-row pt-7 gap-2 items-center">
-              <p>voting placeholder</p>
+              <div id="icons" className="flex space-x-4">
+                <button>
+                  <img
+                    src="../../public/images/icons/cheese-offwhite.png"
+                    alt="cheese icon"
+                  ></img>
+                </button>
+                <button>
+                  <img
+                    src="../../public/images/icons/glasses-offwhite.png"
+                    alt="glasses icon"
+                  ></img>
+                </button>
+                <button>
+                  <img
+                    src="../../public/images/icons/icon-offwhite.png"
+                    alt="nose icon"
+                  ></img>
+                </button>
+                <button>
+                  <img
+                    src="../../public/images/icons/sunrise-offwhite.png"
+                    alt="sunrise icon"
+                  ></img>
+                </button>
+              </div>
             </footer>
             <hr className="mt-5"></hr>
           </div>
