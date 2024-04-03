@@ -2,67 +2,67 @@ import useNews from '../hooks/useNews.ts'
 import { Articles, News as NewsModel } from '../../models/news.ts'
 
 export default function News() {
-  // const { data, isLoading, isError } = useNews()
+  const { data, isLoading, isError } = useNews()
 
-  // if (isLoading) {
-  //   return <p>wait</p>
-  // }
+  if (isLoading) {
+    return <p>wait</p>
+  }
 
-  // if (isError) {
-  //   return <p>Oops</p>
-  // }
+  if (isError) {
+    return <p>Oops</p>
+  }
 
-  // const subsetNewsData: Articles = data
-  // const newsData = subsetNewsData.articles.slice(0, 6)
+  const subsetNewsData: Articles = data
+  const newsData = subsetNewsData.articles.slice(0, 6)
   // console.log(newsData)
 
   // Comment the newsData mock data variable and uncomment the stuff above
-  const newsData = [
-    {
-      id: 1,
-      title: `Grippe aviaire : première mondiale, une personne infectée par une
-          vache laitière - L'Indépendant`,
-      author: 'Jean Pierre',
-      publishedAt: '2024-12-02',
-      url: 'https://youtube.com',
-    },
-    {
-      id: 2,
-      title: `Attentat à Moscou : les individus arrêtés au Daguestan sont liés à
-          l'attaque - CNEWS`,
-      author: 'Jean Pierre',
-      publishedAt: '2023-4-02',
-      url: 'https://youtube.com',
-    },
-    {
-      id: 3,
-      title: `OM - PSG : Mbappé a refait des siennes à Marseille ? - Le10sport`,
-      author: 'David',
-      publishedAt: '1954-4-02',
-      url: 'https://youtube.com',
-    },
-    {
-      id: 4,
-      title: `OM - PSG : Mbappé a refait des siennes à Marseille ? - Le10sport`,
-      author: 'David',
-      publishedAt: '1954-4-02',
-      url: 'https://youtube.com',
-    },
-    {
-      id: 5,
-      title: `OM - PSG : Mbappé a refait des siennes à Marseille ? - Le10sport`,
-      author: 'David',
-      publishedAt: '1954-4-02',
-      url: 'https://youtube.com',
-    },
-    {
-      id: 6,
-      title: `OM - PSG : Mbappé a refait des siennes à Marseille ? - Le10sport`,
-      author: 'David',
-      publishedAt: '1954-4-02',
-      url: 'https://youtube.com',
-    },
-  ]
+  // const newsData = [
+  //   {
+  //     id: 1,
+  //     title: `Grippe aviaire : première mondiale, une personne infectée par une
+  //         vache laitière - L'Indépendant`,
+  //     author: 'Jean Pierre',
+  //     publishedAt: '2024-12-02',
+  //     url: 'https://youtube.com',
+  //   },
+  //   {
+  //     id: 2,
+  //     title: `Attentat à Moscou : les individus arrêtés au Daguestan sont liés à
+  //         l'attaque - CNEWS`,
+  //     author: 'Jean Pierre',
+  //     publishedAt: '2023-4-02',
+  //     url: 'https://youtube.com',
+  //   },
+  //   {
+  //     id: 3,
+  //     title: `OM - PSG : Mbappé a refait des siennes à Marseille ? - Le10sport`,
+  //     author: 'David',
+  //     publishedAt: '1954-4-02',
+  //     url: 'https://youtube.com',
+  //   },
+  //   {
+  //     id: 4,
+  //     title: `OM - PSG : Mbappé a refait des siennes à Marseille ? - Le10sport`,
+  //     author: 'David',
+  //     publishedAt: '1954-4-02',
+  //     url: 'https://youtube.com',
+  //   },
+  //   {
+  //     id: 5,
+  //     title: `OM - PSG : Mbappé a refait des siennes à Marseille ? - Le10sport`,
+  //     author: 'David',
+  //     publishedAt: '1954-4-02',
+  //     url: 'https://youtube.com',
+  //   },
+  //   {
+  //     id: 6,
+  //     title: `OM - PSG : Mbappé a refait des siennes à Marseille ? - Le10sport`,
+  //     author: 'David',
+  //     publishedAt: '1954-4-02',
+  //     url: 'https://youtube.com',
+  //   },
+  // ]
 
   return (
     // Tailwind CSS liste card - posts - article list By maxacrea
