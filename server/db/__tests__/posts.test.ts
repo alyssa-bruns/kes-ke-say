@@ -19,6 +19,15 @@ describe('getAllPosts', () => {
   })
 })
 
+describe('getSinglePost', () => {
+  it('should get just one post', async () => {
+    const singlePost = await db.getSinglePost(2)
+
+    expect(singlePost).toHaveLength(1)
+    expect(singlePost[0].postId).toBe(2)
+  })
+})
+
 afterAll(() => {
   connection.destroy()
 })

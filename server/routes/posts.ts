@@ -21,7 +21,6 @@ router.get('/post/:id', async (req, res) => {
     res.json(post)
   } catch (error) {
     res.sendStatus(500)
-    console.error(error)
   }
 })
 
