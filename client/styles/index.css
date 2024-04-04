@@ -67,3 +67,7 @@ html,
 body {
   font-family: 'Overpass Mono', monospace;
 }
+
+.group-img {
+  width: 50px;
+}
