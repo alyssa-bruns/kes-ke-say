@@ -36,13 +36,13 @@ afterEach(() => {
   vi.clearAllMocks()
 })
 
-describe('<PostFeed/>', () => {
-  it('should render some posts', async () => {
+describe('<Post/>', () => {
+  it('should a posts', async () => {
     const scope = nock('http://localhost')
-      .get('/api/v1/posts')
+      .get('/api/v1/posts/post/1')
       .reply(200, mockPosts)
 
-    renderRoute('/')
+    renderRoute('/post/1')
 
     const post = await screen.findByText('blog body text post 1')
     expect(post).toBeVisible()
@@ -60,9 +60,11 @@ describe('<PostFeed/>', () => {
     expect(scope.isDone()).toBe(true)
   })
   it('should show an error message when there is an error', async () => {
-    const scope = nock('http://localhost').get('/api/v1/posts').reply(500)
+    const scope = nock('http://localhost')
+      .get('/api/v1/posts/post/1')
+      .reply(500)
 
-    renderRoute('/')
+    renderRoute('/post/1')
 
     await waitForElementToBeRemoved(() =>
       screen.queryByText(/This page is loading.../i)
@@ -73,10 +75,10 @@ describe('<PostFeed/>', () => {
   })
   it('should show null if there is no image URL', async () => {
     const scope = nock('http://localhost')
-      .get('/api/v1/posts')
+      .get('/api/v1/posts/post/1')
       .reply(200, mockImagelessPost)
 
-    renderRoute('/')
+    renderRoute('/post/1')
 
     await screen.findByText('blog body text post 1')
 

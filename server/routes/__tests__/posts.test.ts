@@ -40,3 +40,20 @@ describe('GET api/v1/posts', async () => {
     expect(res.statusCode).toBe(500)
   })
 })
+
+describe('GET api/v1/posts/post/:id', async () => {
+  it('should get one post', async () => {
+    vi.mocked(postsDb.getSinglePost).mockResolvedValue(mockPosts)
+
+    const res = await request(server).get('/api/v1/posts/post/2')
+
+    expect(res.statusCode).toBe(200)
+  })
+  it('should send an error message', async () => {
+    vi.mocked(postsDb.getSinglePost).mockRejectedValue(mockPosts)
+
+    const res = await request(server).get('/api/v1/posts/post/2')
+
+    expect(res.statusCode).toBe(500)
+  })
+})
