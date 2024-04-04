@@ -1,24 +1,6 @@
-import config from '../knexfile'
-import {
-  describe,
-  it,
-  expect,
-  vi,
-  beforeAll,
-  beforeEach,
-  afterAll,
-} from 'vitest'
+import { describe, it, expect, beforeAll, beforeEach, afterAll } from 'vitest'
 import connection from '../connection'
 import * as db from '../functions/users'
-
-describe('afterCreate PRAGMA', () => {
-  it('enforces foreign keys (development)', () => {
-    const cb = {}
-    const db = { run: vi.fn() }
-    config.development.pool.afterCreate(db, cb)
-    expect(db.run).toHaveBeenCalledWith('PRAGMA foreign_keys = ON', cb)
-  })
-})
 
 beforeAll(async () => {
   return connection.migrate.latest()

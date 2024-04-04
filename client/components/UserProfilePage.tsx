@@ -9,10 +9,6 @@ function UserProfilePage() {
     isError,
   } = useFetchProfile(params?.username as string)
 
-  if (params.username == undefined) {
-    throw new Error('Params.username is undefined')
-  }
-
   if (isLoading) {
     return <p>Loading...</p>
   }

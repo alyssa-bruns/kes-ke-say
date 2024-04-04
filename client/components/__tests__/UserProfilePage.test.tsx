@@ -1,10 +1,15 @@
 //@vitest-environment jsdom
-import { describe, it, expect, beforeAll } from 'vitest'
+import { describe, it, expect, beforeAll, afterEach, vi } from 'vitest'
 import { renderRoute } from '../../test-utils'
 import nock from 'nock'
+import { waitForElementToBeRemoved } from '@testing-library/react'
 
 beforeAll(() => {
   nock.disableNetConnect()
+})
+
+afterEach(() => {
+  vi.clearAllMocks()
 })
 
 const mockData = {
@@ -27,6 +32,19 @@ describe('<UserProfilePage />', () => {
     const text = await screen.findByText(/Username: shaq/)
     // Assert
     expect(text).toBeVisible()
+    expect(scope.isDone()).toBe(true)
+  })
+  it('Should return an error message', async () => {
+    // Arrange / Act
+    const scope = nock('http://localhost')
+      .get('/api/v1/users/profiles/shaq')
+      .reply(500)
+    const screen = renderRoute('/profiles/shaq')
+
+    await waitForElementToBeRemoved(() => screen.queryByText(/Loading.../i))
+    // Assert
+    const error = screen.getByText(/The username `shaq` does not exist./)
+    expect(error).toBeVisible()
     expect(scope.isDone()).toBe(true)
   })
 })
