@@ -6,6 +6,7 @@ import Home from './components/Home'
 import News from './components/News'
 import AllGroups from './components/AllGroups'
 import GroupProfilePage from './components/GroupProfilePage'
+import UserProfilePage from './components/UserProfilePage'
 
 export const routes = createRoutesFromElements(
   <>
@@ -19,7 +20,7 @@ export const routes = createRoutesFromElements(
       <Route path="register" element={<div>Register</div>} />
       <Route path="profiles">
         <Route index element={<div>AllProfiles </div>} />
-        <Route path=":username" element={<div>Profile</div>} />
+        <Route path=":username" element={<UserProfilePage />} />
       </Route>
       <Route path="groups">
         <Route index element={<AllGroups />} />
