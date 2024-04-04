@@ -24,8 +24,8 @@ router.get('/post/:id', async (req, res) => {
   }
 })
 
-// POST /api/v1/posts
-router.post('/', async (req, res) => {
+// POST /api/v1/posts/post
+router.post('/post', async (req, res) => {
   try {
     const newPost = req.body
     await db.addPost(newPost)

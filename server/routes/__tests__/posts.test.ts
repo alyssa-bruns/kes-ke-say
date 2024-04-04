@@ -58,7 +58,7 @@ describe('GET api/v1/posts/post/:id', async () => {
   })
 })
 
-describe('POST api/v1/posts', () => {
+describe('POST api/v1/posts/post', () => {
   it('should add a new post', async () => {
     const newPost = {
       id: 543,
@@ -71,7 +71,7 @@ describe('POST api/v1/posts', () => {
     vi.mocked(postsDb.addPost).mockResolvedValue([543])
     const addPostSpy = vi.spyOn(postsDb, 'addPost')
 
-    const res = await request(server).post('/api/v1/posts').send(newPost)
+    const res = await request(server).post('/api/v1/posts/post').send(newPost)
 
     expect(res.statusCode).toBe(200)
     expect(addPostSpy).toHaveBeenLastCalledWith(newPost)
@@ -86,7 +86,7 @@ describe('POST api/v1/posts', () => {
     }
     vi.mocked(postsDb.addPost).mockRejectedValue(newPost)
 
-    const res = await request(server).post('/api/v1/posts').send(newPost)
+    const res = await request(server).post('/api/v1/posts/post').send(newPost)
 
     expect(res.statusCode).toBe(500)
   })

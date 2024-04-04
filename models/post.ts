@@ -10,6 +10,7 @@ export interface Post {
 export interface NewPost {
   body: string
   image: string
+  user_id: string
 }
 
 export interface PostOnly {
