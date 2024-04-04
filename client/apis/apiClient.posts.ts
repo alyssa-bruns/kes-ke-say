@@ -13,6 +13,6 @@ export async function getSinglePost(id: number) {
   return res.body
 }
 
-export async function addNewTodo(newPost: NewPost): Promise<void> {
+export async function addPost(newPost: NewPost): Promise<void> {
   await request.post(root).send(newPost)
 }
