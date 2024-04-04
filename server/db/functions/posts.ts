@@ -33,6 +33,6 @@ export async function getSinglePost(id: number) {
 }
 
 export async function addPost(newPost: PostOnly) {
-  const post = await db('posts').insert(newPost)
+  const post = await db('posts').insert(newPost).returning('*')
   return post
 }

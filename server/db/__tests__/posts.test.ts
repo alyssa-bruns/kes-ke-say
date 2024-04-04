@@ -35,13 +35,10 @@ describe('addPost', () => {
       body: 'blog body',
       image: 'url',
       created_at: 324523453452,
+      user_id: 20,
     })
 
-    const allPosts = await db.getAllPosts()
-    console.log(allPosts)
-    console.log(newPost)
-    expect(allPosts).toHaveLength(5)
-    expect(allPosts[4].postId).toBe(5)
+    expect(newPost[0].id).toBe(543)
   })
 })
 
