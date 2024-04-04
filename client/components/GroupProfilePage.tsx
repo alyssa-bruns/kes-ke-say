@@ -11,14 +11,14 @@ export function GroupProfilePage() {
     data: groupData,
   } = useQuery({
     queryKey: ['group', id],
-    queryFn: () => getGroupById(id),
+    queryFn: () => getGroupById(Number(id)),
   })
 
   if (isLoading) {
     return <h1>Loading...GroupPage</h1>
   }
 
-  if (isError) {
+  if (isError || !groupData) {
     return <h1>Error</h1>
   }
 

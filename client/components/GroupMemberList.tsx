@@ -10,14 +10,14 @@ export function GroupMemberList() {
     data: memberData,
   } = useQuery({
     queryKey: ['member', id],
-    queryFn: () => getGroupMembersById(id),
+    queryFn: () => getGroupMembersById(Number(id)),
   })
-
+  console.log(memberData)
   if (isLoading) {
     return <h1>Loading...GroupPage</h1>
   }
 
-  if (isError) {
+  if (isError || !memberData) {
     return <h1>Error</h1>
   }
 
@@ -25,7 +25,7 @@ export function GroupMemberList() {
     <>
       <div>member list here</div>
       {memberData.map((member) => (
-        <p key={member.id}>{member.user_id}</p>
+        <p key={member.id}>{member.user_id.fullName}</p>
       ))}
     </>
   )
