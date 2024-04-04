@@ -25,10 +25,10 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-router.get('/members/:user_id', async (req, res) => {
-  const user_id = Number(req.params.user_id)
+router.get('/members/:id', async (req, res) => {
+  const id = Number(req.params.id)
   try {
-    const members = await db.getGroupMembersById(user_id)
+    const members = await db.getGroupMembersById(id)
     res.json(members)
     res.status(200)
   } catch (error) {

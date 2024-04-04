@@ -1,5 +1,5 @@
 import connection from '../connection'
-import { group } from '../../../models/group'
+import { group, member } from '../../../models/group'
 
 const db = connection
 
@@ -13,9 +13,7 @@ export async function getGroupById(id: number): Promise<group[]> {
   return group
 }
 
-export async function getGroupMembersById(user_id: number) {
-  const members = await db('group_members')
-    .where({ group_id: user_id })
-    .select()
+export async function getGroupMembersById(id: number): Promise<member[]> {
+  const members = await db('group_members').where({ group_id: id }).select()
   return members
 }

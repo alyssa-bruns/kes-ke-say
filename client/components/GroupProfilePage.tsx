@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { getGroupById } from '../apis/apiGroup'
 import { useQuery } from '@tanstack/react-query'
+import GroupMemberList from './GroupMemberList'
 
 export function GroupProfilePage() {
   const { id } = useParams()
@@ -25,6 +26,8 @@ export function GroupProfilePage() {
     <>
       <div>{groupData?.name}</div>
       <img src={`/images/icons/${groupData?.image}`} alt={groupData?.name} />
+
+      <GroupMemberList />
     </>
   )
 }
