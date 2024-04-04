@@ -24,6 +24,14 @@ const mockPosts = [
   },
 ]
 
+const newPost = {
+  id: 543,
+  user_id: 234,
+  body: 'blog body',
+  image: 'url',
+  created_at: 324523453452,
+}
+
 describe('GET api/v1/posts', async () => {
   it('should get all posts', async () => {
     vi.mocked(postsDb.getAllPosts).mockResolvedValue(mockPosts)

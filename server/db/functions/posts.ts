@@ -1,5 +1,5 @@
 import connection from '../connection'
-import { Post } from '../../../models/post'
+import { Post, PostOnly } from '../../../models/post'
 
 const db = connection
 
@@ -32,6 +32,7 @@ export async function getSinglePost(id: number) {
   return data
 }
 
-export async function addPost(body: string, image: string) {
-  return db('posts').select().insert({ body, image })
+export async function addPost(newPost: PostOnly) {
+  const post = await db('posts').insert(newPost)
+  return post
 }
