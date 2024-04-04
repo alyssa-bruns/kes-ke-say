@@ -24,7 +24,10 @@ export function PostFeed() {
               <div id="card" className="w-1/2 flex flex-col mt-5">
                 <div key={post.postId}>
                   <header className="flex flex-row gap-3 items-center">
-                    <div> {post.username}</div>
+                    <Link to={`/profiles/${post.username}`}>
+                      {' '}
+                      {post.username}
+                    </Link>
                     <time
                       dateTime={date.toISOString()}
                       className="text-sm text-gray-500"
