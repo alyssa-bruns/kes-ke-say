@@ -13,4 +13,15 @@ router.get('/', async (req, res) => {
   }
 })
 
+// GET /api/v1/posts/post/:id
+router.get('/post/:id', async (req, res) => {
+  try {
+    const id = Number(req.params.id)
+    const post = await db.getSinglePost(id)
+    res.json(post)
+  } catch (error) {
+    res.sendStatus(500)
+  }
+})
+
 export default router

@@ -38,7 +38,7 @@ describe('<Weather/>', () => {
     const { ...screen } = renderRoute('/')
 
     await waitForElementToBeRemoved(() => screen.queryByLabelText(/loading/i))
-    const error = screen.getByText(/Oops no weather/i)
+    const error = screen.getByText(/No weather available/i)
     expect(error).toBeVisible()
     expect(scope.isDone()).toBe(true)
   })

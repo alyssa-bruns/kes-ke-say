@@ -12,7 +12,7 @@ export default function Weather() {
   }
 
   if (isError) {
-    return <p>Oops no weather</p>
+    return <p>No weather available</p>
   }
 
   const weatherData: CurrentConditions[] = data.days
