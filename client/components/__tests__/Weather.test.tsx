@@ -1,11 +1,6 @@
 //@vitest-environment jsdom
-import { describe, it, expect, beforeAll } from 'vitest'
-import {
-  render,
-  waitFor,
-  waitForElementToBeRemoved,
-  within,
-} from '@testing-library/react/pure'
+import { describe, it, expect } from 'vitest'
+import { waitForElementToBeRemoved } from '@testing-library/react/pure'
 import nock from 'nock'
 
 import { renderRoute } from '../../test-utils.tsx'
@@ -32,7 +27,6 @@ describe('<Weather/>', () => {
 
     const { ...screen } = renderRoute('/')
 
-    // const weatherTemp = await screen.findByRole('paragraph')
     const weatherTemp = await screen.findByText(/paris/i)
     expect(weatherTemp).toBeVisible()
     expect(scope.isDone()).toBe(true)
