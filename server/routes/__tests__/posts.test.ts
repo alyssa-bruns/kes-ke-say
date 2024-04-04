@@ -24,14 +24,6 @@ const mockPosts = [
   },
 ]
 
-const newPost = {
-  id: 543,
-  user_id: 234,
-  body: 'blog body',
-  image: 'url',
-  created_at: 324523453452,
-}
-
 describe('GET api/v1/posts', async () => {
   it('should get all posts', async () => {
     vi.mocked(postsDb.getAllPosts).mockResolvedValue(mockPosts)
@@ -61,6 +53,40 @@ describe('GET api/v1/posts/post/:id', async () => {
     vi.mocked(postsDb.getSinglePost).mockRejectedValue(mockPosts)
 
     const res = await request(server).get('/api/v1/posts/post/2')
+
+    expect(res.statusCode).toBe(500)
+  })
+})
+
+describe('POST api/v1/posts', () => {
+  it('should add a new post', async () => {
+    const newPost = {
+      id: 543,
+      body: 'blog body',
+      image: 'url',
+      created_at: 324523453452,
+      user_id: 20,
+    }
+
+    vi.mocked(postsDb.addPost).mockResolvedValue([543])
+    const addPostSpy = vi.spyOn(postsDb, 'addPost')
+
+    const res = await request(server).post('/api/v1/posts').send(newPost)
+
+    expect(res.statusCode).toBe(200)
+    expect(addPostSpy).toHaveBeenLastCalledWith(newPost)
+  })
+  it('should send an error message', async () => {
+    const newPost = {
+      id: 543,
+      body: 'blog body',
+      image: 'url',
+      created_at: 324523453452,
+      user_id: 20,
+    }
+    vi.mocked(postsDb.addPost).mockRejectedValue(newPost)
+
+    const res = await request(server).post('/api/v1/posts').send(newPost)
 
     expect(res.statusCode).toBe(500)
   })
