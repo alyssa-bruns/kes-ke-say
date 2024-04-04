@@ -9,6 +9,6 @@ export async function getAllGroups(): Promise<group[]> {
 }
 
 export async function getGroupById(id: number): Promise<group[]> {
-  const group = await db('groups').where({ id }).select().first()
+  const group = await db('groups').where({ id }).select()
   return group
 }
