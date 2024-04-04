@@ -48,25 +48,25 @@ export function Post() {
               <div id="icons" className="flex space-x-4">
                 <button>
                   <img
-                    src="../../public/images/icons/cheese-offwhite.png"
+                    src="../../images/icons/cheese-offwhite.png"
                     alt="cheese icon"
                   ></img>
                 </button>
                 <button>
                   <img
-                    src="../../public/images/icons/glasses-offwhite.png"
+                    src="../../images/icons/glasses-offwhite.png"
                     alt="glasses icon"
                   ></img>
                 </button>
                 <button>
                   <img
-                    src="../../public/images/icons/icon-offwhite.png"
+                    src="../../images/icons/icon-offwhite.png"
                     alt="nose icon"
                   ></img>
                 </button>
                 <button>
                   <img
-                    src="../../public/images/icons/sunrise-offwhite.png"
+                    src="../../images/icons/sunrise-offwhite.png"
                     alt="sunrise icon"
                   ></img>
                 </button>
