@@ -16,6 +16,16 @@ const mockPosts = [
   },
 ]
 
+const mockImagelessPost = [
+  {
+    postId: 1,
+    username: 'ida',
+    body: 'blog body text post 1',
+    userId: 34,
+    createdAt: 2342343453,
+  },
+]
+
 beforeAll(() => {
   nock.disableNetConnect()
 
@@ -61,6 +71,20 @@ describe('<Post/>', () => {
     )
     const error = screen.getByText(/Something went wrong sorry/i)
     expect(error).toBeVisible()
+    expect(scope.isDone()).toBe(true)
+  })
+  it('should show null if there is no image URL', async () => {
+    const scope = nock('http://localhost')
+      .get('/api/v1/posts/post/1')
+      .reply(200, mockImagelessPost)
+
+    renderRoute('/post/1')
+
+    await screen.findByText('blog body text post 1')
+
+    const image = await screen.queryByAltText('Blog Pic')
+    expect(image).toBeNull()
+
     expect(scope.isDone()).toBe(true)
   })
 })
