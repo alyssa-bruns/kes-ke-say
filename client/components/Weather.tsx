@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { CurrentConditions } from '../../models/weather'
 import useWeather from '../hooks/useWeather'
 import LoadingIndicator from './LoadingIndicator'
+import Ticker from 'react-ticker'
 
 export default function Weather() {
   const { data, isPending, isError } = useWeather()
@@ -16,11 +18,26 @@ export default function Weather() {
   const weatherData: CurrentConditions[] = data.days
 
   return (
-    <div>
+    <>
       <p>Todays Temp:</p>
-      <p className="text-sm mt-4 text-blue-900">
-        Paris - {weatherData[0].temp}&deg;c
-      </p>
-    </div>
+      <div className="mt-4">
+        <Ticker>
+          {({ index }) => (
+            <div>
+              <p className="text-sm mt-4 text-blue-900 inline ml-2">
+                {' '}
+                Paris -{' '}
+                <span className="italic">{weatherData[0].temp}&deg;c</span>
+              </p>
+              <p className="text-sm mt-4 text-blue-900 inline">
+                {' '}
+                Conditions -{' '}
+                <span className="italic">{weatherData[0].conditions}</span>
+              </p>
+            </div>
+          )}
+        </Ticker>
+      </div>
+    </>
   )
 }
