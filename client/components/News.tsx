@@ -1,68 +1,19 @@
 import useNews from '../hooks/useNews.ts'
-import { Articles, News as NewsModel } from '../../models/news.ts'
+import { Articles } from '../../models/news.ts'
 
 export default function News() {
-  // const { data, isLoading, isError } = useNews()
+  const { data, isLoading, isError } = useNews()
 
-  // if (isLoading) {
-  //   return <p>wait</p>
-  // }
+  if (isLoading) {
+    return <p>wait</p>
+  }
 
-  // if (isError) {
-  //   return <p>Oops</p>
-  // }
+  if (isError) {
+    return <p>Oops</p>
+  }
 
-  // const subsetNewsData: Articles = data
-  // const newsData = subsetNewsData.articles.slice(0, 6)
-  // console.log(newsData)
-
-  // Comment the newsData mock data variable and uncomment the stuff above
-  const newsData = [
-    {
-      id: 1,
-      title: `Grippe aviaire : première mondiale, une personne infectée par une
-          vache laitière - L'Indépendant`,
-      author: 'Jean Pierre',
-      publishedAt: '2024-12-02',
-      url: 'https://youtube.com',
-    },
-    {
-      id: 2,
-      title: `Attentat à Moscou : les individus arrêtés au Daguestan sont liés à
-          l'attaque - CNEWS`,
-      author: 'Jean Pierre',
-      publishedAt: '2023-4-02',
-      url: 'https://youtube.com',
-    },
-    {
-      id: 3,
-      title: `OM - PSG : Mbappé a refait des siennes à Marseille ? - Le10sport`,
-      author: 'David',
-      publishedAt: '1954-4-02',
-      url: 'https://youtube.com',
-    },
-    {
-      id: 4,
-      title: `OM - PSG : Mbappé a refait des siennes à Marseille ? - Le10sport`,
-      author: 'David',
-      publishedAt: '1954-4-02',
-      url: 'https://youtube.com',
-    },
-    {
-      id: 5,
-      title: `OM - PSG : Mbappé a refait des siennes à Marseille ? - Le10sport`,
-      author: 'David',
-      publishedAt: '1954-4-02',
-      url: 'https://youtube.com',
-    },
-    {
-      id: 6,
-      title: `OM - PSG : Mbappé a refait des siennes à Marseille ? - Le10sport`,
-      author: 'David',
-      publishedAt: '1954-4-02',
-      url: 'https://youtube.com',
-    },
-  ]
+  const subsetNewsData: Articles = data
+  const newsData = subsetNewsData.articles.slice(0, 6)
 
   return (
     // Tailwind CSS liste card - posts - article list By maxacrea
@@ -76,67 +27,50 @@ export default function News() {
               </h2>
             </div>
             <div className="grid w-full gap-10 grid-cols-3">
-              {newsData.map(
-                (
-                  news //subsetNewsData.map
-                ) => (
-                  <div
-                    key={news.author} // news.source.id
-                    className="bg-white w-full rounded-lg shadow-md flex flex-col transition-all overflow-hidden hover:shadow-2xl"
-                  >
-                    <div className="p-6">
-                      <div className="pb-3 mb-4 border-b border-stone-200 text-xs font-medium flex justify-between text-blue-900">
-                        <span className="flex items-center gap-1">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth="1.5"
-                            stroke="currentColor"
-                            className="w-6 h-6"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                            />
-                          </svg>
-                          {new Date(news.publishedAt).toLocaleDateString()}
-                        </span>
-                      </div>
-                      <h3 className="mb-4 font-semibold text-2xl">
-                        <a
-                          href={news.url}
-                          className="transition-all text-blue-900 hover:text-blue-600"
+              {newsData.map((news) => (
+                <div
+                  key={news.author}
+                  className="bg-white w-full rounded-lg shadow-md flex flex-col transition-all overflow-hidden hover:shadow-2xl"
+                >
+                  <div className="p-6">
+                    <div className="pb-3 mb-4 border-b border-stone-200 text-xs font-medium flex justify-between text-blue-900">
+                      <span className="flex items-center gap-1">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          className="w-6 h-6"
                         >
-                          {news.title}
-                        </a>
-                      </h3>
-                      <p className="text-sky-800 text-sm mb-0">
-                        Article by {news.author}
-                      </p>
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                          />
+                        </svg>
+                        {new Date(news.publishedAt).toLocaleDateString()}
+                      </span>
                     </div>
-                    <div className="mt-auto"></div>
+                    <h3 className="mb-4 font-semibold text-2xl">
+                      <a
+                        href={news.url}
+                        className="transition-all text-blue-900 hover:text-blue-600"
+                      >
+                        {news.title}
+                      </a>
+                    </h3>
+                    <p className="text-sky-800 text-sm mb-0">
+                      Article by {news.author}
+                    </p>
                   </div>
-                )
-              )}
+                  <div className="mt-auto"></div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
     </div>
   )
-}
-
-{
-  /* <ul>
-        {' '}
-        {subsetNewsData.map((news: NewsModel) => (
-          <li key={news.source.id}>
-            <a href={news.url} className="text-sm mt-4">
-              {news.title}
-            </a>
-          </li>
-        ))}
-      </ul> */
 }

@@ -3,8 +3,8 @@ import { createRoutesFromElements, Route } from 'react-router-dom'
 import LandingPage from './components/LandingPage'
 import App from './components/App'
 import Home from './components/Home'
-import AllGroups from './components/AllGroups'
 import News from './components/News'
+import AllGroups from './components/AllGroups'
 
 export const routes = createRoutesFromElements(
   <>
