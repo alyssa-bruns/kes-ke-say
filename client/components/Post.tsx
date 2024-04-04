@@ -45,7 +45,7 @@ export function Post() {
               </div>
             </div>
             <footer className="flex flex-row pt-7 gap-2 items-center">
-              <div id="icons" className="flex space-x-4">
+              <div id="icons" className="flex space-x-4 w-60">
                 <button>
                   <img
                     src="../../images/icons/cheese-offwhite.png"
