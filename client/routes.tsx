@@ -6,6 +6,7 @@ import Home from './components/Home'
 import News from './components/News'
 import AllGroups from './components/AllGroups'
 import GroupProfilePage from './components/GroupProfilePage'
+import { Post } from './components/Post'
 import UserProfilePage from './components/UserProfilePage'
 
 export const routes = createRoutesFromElements(
@@ -15,7 +16,7 @@ export const routes = createRoutesFromElements(
       {/* Replace the element with your React Component */}
       <Route path="post">
         <Route index element={<div>AddPost</div>} />
-        <Route path=":id" element={<div>Post</div>} />
+        <Route path=":id" element={<Post />} />
       </Route>
       <Route path="register" element={<div>Register</div>} />
       <Route path="profiles">
