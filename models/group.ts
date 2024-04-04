@@ -6,11 +6,10 @@ export interface group {
 
 export interface member {
   id: number
-  user_id: {
-    username: string
-    fullName: string
-    location: string
-    image: string
-  }
-  group_id: number
+  groupId: number
+  auth0Id: string
+  username: string
+  fullName: string
+  location: string
+  image: string
 }

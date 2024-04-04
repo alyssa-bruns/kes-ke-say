@@ -23,9 +23,11 @@ export function GroupMemberList() {
 
   return (
     <>
-      <div>member list here</div>
       {memberData.map((member) => (
-        <p key={member.id}>{member.user_id.fullName}</p>
+        <div key={member.id}>
+          <img src={`/images/avatars/${member.image}`} alt={member.image} />
+          <p>{member.fullName}</p>
+        </div>
       ))}
     </>
   )
