@@ -7,3 +7,8 @@ export async function getAllGroups(): Promise<group[]> {
   const res = await request.get(rootUrl)
   return res.body
 }
+
+export async function getGroupById(id: number): Promise<group> {
+  const res = await request.get(`${rootUrl}/${id}`)
+  return res.body
+}
