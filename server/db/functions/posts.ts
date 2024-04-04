@@ -31,3 +31,7 @@ export async function getSinglePost(id: number) {
     .where('postId', id)
   return data
 }
+
+export async function addPost(body: string, image: string) {
+  return db('posts').select().insert({ body, image })
+}
