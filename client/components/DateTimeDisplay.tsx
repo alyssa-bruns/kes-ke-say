@@ -12,7 +12,8 @@ export default function DateTimeDisplay() {
   return (
     <div>
       <h3>
-        Time in France: <span className="text-sm mt-4">{dateTimeStr}</span>
+        Time in France:{' '}
+        <span className="text-sm mt-4 block text-blue-900">{dateTimeStr}</span>
       </h3>
     </div>
   )
