@@ -20,7 +20,7 @@ export function Post() {
   return (
     <>
       <div className="h-screen flex flex-col items-center justify-center">
-        <div id="card" className="w-dvw flex flex-col mt-5 h-auto">
+        <div id="card" className=" flex flex-col mt-5 h-auto">
           <div key={post[0].postId}>
             <header className="flex flex-row gap-3 items-center">
               <Link to={`/profiles/${post[0].username}`}>
@@ -35,7 +35,7 @@ export function Post() {
                 {new Intl.DateTimeFormat('en-GB').format(date)}
               </time>
             </header>
-            <div id="content" className="grid grid-cols-4 gap-3">
+            <div id="content" className="grid grid-cols-3 gap-3">
               <div className="col-span-3 flex flex-col">
                 <div id="image" className="flex items-center">
                   {post[0].image ? (
