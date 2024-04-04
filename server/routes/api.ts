@@ -16,7 +16,6 @@ router.get('/', async (req, res, next) => {
     res.json(news.body)
   } catch (error) {
     res.sendStatus(500)
-    console.log(error.message)
     next(error)
   }
 })

@@ -1,9 +1,6 @@
-import { it, expect, describe, vi, beforeAll, afterAll } from 'vitest'
+import { it, expect, describe } from 'vitest'
 import request from 'supertest'
-import * as newsApi from '../../routes/api.ts'
 import server from '../../server.ts'
-import express from 'express'
-import apiRoutes from '../api.ts'
 import nock from 'nock'
 
 // nock.disableNetConnect()
