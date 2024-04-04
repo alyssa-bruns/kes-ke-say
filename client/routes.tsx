@@ -3,6 +3,7 @@ import { createRoutesFromElements, Route } from 'react-router-dom'
 import LandingPage from './components/LandingPage'
 import App from './components/App'
 import Home from './components/Home'
+import News from './components/News'
 import AllGroups from './components/AllGroups'
 import GroupProfilePage from './components/GroupProfilePage'
 
@@ -32,6 +33,7 @@ export const routes = createRoutesFromElements(
           }
         />
       </Route>
+      <Route path="/news" element={<News />} />
     </Route>
     <Route path="/login" element={<LandingPage />} />
   </>
