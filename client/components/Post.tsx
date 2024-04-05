@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useGetSinglePost } from '../hooks/use-get-posts.ts'
 
 export function Post() {
@@ -20,10 +20,13 @@ export function Post() {
   return (
     <>
       <div className="h-screen flex flex-col items-center justify-center">
-        <div id="card" className="w-dvw flex flex-col mt-5 h-auto">
+        <div id="card" className=" flex flex-col mt-5 h-auto">
           <div key={post[0].postId}>
             <header className="flex flex-row gap-3 items-center">
-              <div> {post[0].username}</div>
+              <Link to={`/profiles/${post[0].username}`}>
+                {' '}
+                {post[0].username}
+              </Link>
               <time
                 dateTime={date.toISOString()}
                 className="text-sm text-gray-500"
@@ -32,7 +35,7 @@ export function Post() {
                 {new Intl.DateTimeFormat('en-GB').format(date)}
               </time>
             </header>
-            <div id="content" className="grid grid-cols-4 gap-3">
+            <div id="content" className="grid grid-cols-3 gap-3">
               <div className="col-span-3 flex flex-col">
                 <div id="image" className="flex items-center">
                   {post[0].image ? (

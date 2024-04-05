@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import DateTimeDisplay from './DateTimeDisplay'
+import Weather from './Weather'
 function Footer() {
   return (
     <>
@@ -24,7 +25,7 @@ function Footer() {
                 </p>
               </div>
               <div>
-                <p className="font-xl">Weather</p>
+                <Weather />
               </div>
               <div>
                 <DateTimeDisplay />
