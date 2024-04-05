@@ -14,5 +14,5 @@ export async function getSinglePost(id: number) {
 }
 
 export async function addPost(newPost: NewPost): Promise<void> {
-  await request.post(root).send(newPost)
+  await request.post(`${root}/post/`).send(newPost)
 }
