@@ -28,6 +28,20 @@ describe('getSinglePost', () => {
   })
 })
 
+describe('addPost', () => {
+  it('should add a new post', async () => {
+    const newPost = await db.addPost({
+      id: 543,
+      body: 'blog body',
+      image: 'url',
+      created_at: 324523453452,
+      user_id: 20,
+    })
+
+    expect(newPost[0].id).toBe(543)
+  })
+})
+
 afterAll(() => {
   connection.destroy()
 })

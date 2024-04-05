@@ -1,5 +1,5 @@
 import connection from '../connection'
-import { Post } from '../../../models/post'
+import { Post, PostOnly } from '../../../models/post'
 
 const db = connection
 
@@ -30,4 +30,9 @@ export async function getSinglePost(id: number) {
     )
     .where('postId', id)
   return data
+}
+
+export async function addPost(newPost: PostOnly) {
+  const post = await db('posts').insert(newPost).returning('*')
+  return post
 }

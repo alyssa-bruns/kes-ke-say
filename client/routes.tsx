@@ -8,6 +8,7 @@ import AllGroups from './components/AllGroups'
 import GroupProfilePage from './components/GroupProfilePage'
 import { Post } from './components/Post'
 import UserProfilePage from './components/UserProfilePage'
+import { AddPost } from './components/AddPost'
 
 export const routes = createRoutesFromElements(
   <>
@@ -15,7 +16,7 @@ export const routes = createRoutesFromElements(
       <Route index element={<Home />} />
       {/* Replace the element with your React Component */}
       <Route path="post">
-        <Route index element={<div>AddPost</div>} />
+        <Route index element={<AddPost />} />
         <Route path=":id" element={<Post />} />
       </Route>
       <Route path="register" element={<div>Register</div>} />
