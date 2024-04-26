@@ -20,7 +20,7 @@ describe('<Weather/>', () => {
     expect(loading).toBeVisible()
   })
   //
-  it.todo('should show temperature', async () => {
+  it('should show temperature', async () => {
     const scope = nock('http://localhost')
       .get(`/api/v1/weather`)
       .reply(200, mockWeather)

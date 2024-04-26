@@ -6,17 +6,3 @@ export interface Post {
   createdAt: number
   username: string
 }
-
-export interface NewPost {
-  body: string
-  image: string
-  user_id: string
-}
-
-export interface PostOnly {
-  id: number
-  body: string
-  image: string
-  created_at: number
-  user_id: number
-}

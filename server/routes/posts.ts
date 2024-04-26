@@ -24,15 +24,4 @@ router.get('/post/:id', async (req, res) => {
   }
 })
 
-// POST /api/v1/posts/post
-router.post('/post', async (req, res) => {
-  try {
-    const newPost = req.body
-    await db.addPost(newPost)
-    res.sendStatus(200)
-  } catch (error) {
-    res.sendStatus(500)
-  }
-})
-
 export default router

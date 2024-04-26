@@ -14,26 +14,4 @@ router.get('/', async (req, res) => {
   }
 })
 
-router.get('/:id', async (req, res) => {
-  const id = Number(req.params.id)
-  try {
-    const group = await db.getGroupById(id)
-    res.json(group)
-    res.status(200)
-  } catch (error) {
-    res.status(500).json([error])
-  }
-})
-
-router.get('/members/:id', async (req, res) => {
-  const id = Number(req.params.id)
-  try {
-    const members = await db.getGroupMembersById(id)
-    res.json(members)
-    res.status(200)
-  } catch (error) {
-    res.status(500).json([error])
-  }
-})
-
 export default router
