@@ -57,3 +57,37 @@ describe('GET api/v1/posts/post/:id', async () => {
     expect(res.statusCode).toBe(500)
   })
 })
+
+describe('POST api/v1/posts/post', () => {
+  it('should add a new post', async () => {
+    const newPost = {
+      id: 543,
+      body: 'blog body',
+      image: 'url',
+      created_at: 324523453452,
+      user_id: 20,
+    }
+
+    vi.mocked(postsDb.addPost).mockResolvedValue([543])
+    const addPostSpy = vi.spyOn(postsDb, 'addPost')
+
+    const res = await request(server).post('/api/v1/posts/post').send(newPost)
+
+    expect(res.statusCode).toBe(200)
+    expect(addPostSpy).toHaveBeenLastCalledWith(newPost)
+  })
+  it('should send an error message', async () => {
+    const newPost = {
+      id: 543,
+      body: 'blog body',
+      image: 'url',
+      created_at: 324523453452,
+      user_id: 20,
+    }
+    vi.mocked(postsDb.addPost).mockRejectedValue(newPost)
+
+    const res = await request(server).post('/api/v1/posts/post').send(newPost)
+
+    expect(res.statusCode).toBe(500)
+  })
+})
